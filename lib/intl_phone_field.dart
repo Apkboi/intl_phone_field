@@ -24,6 +24,7 @@ class IntlPhoneField extends StatefulWidget {
   final bool readOnly;
   final FormFieldSetter<PhoneNumber>? onSaved;
 
+  final bool disableDialog;
   /// {@macro flutter.widgets.editableText.onChanged}
   ///
   /// See also:
@@ -281,6 +282,7 @@ class IntlPhoneField extends StatefulWidget {
     this.showCursor = true,
     this.pickerDialogStyle,
     this.flagsButtonMargin = EdgeInsets.zero,
+     this.disableDialog = false,
   }) : super(key: key);
 
   @override
@@ -474,7 +476,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
               ],
             ),
           ),
-          onTap: widget.enabled ? _changeCountry : null,
+          onTap: !widget.disableDialog? widget.enabled ? _changeCountry : null:null,
         ),
       ),
     );
